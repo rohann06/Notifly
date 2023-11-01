@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navabr from "./components/Navbar";
+import LayoutProvider from "./providers/LayoutProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=" h-full relative">
-          <div  className=" relative hidden h-full lg:w-80 lg:flex lg:flex-col lg:fixed lg:inset-y-0  bg-[#3C4042]">
-              <Navabr/>
-          </div>
-          <main className=" lg:pl-80 lg:m-8">
-            <div className=" flex justify-end items-end">Uaser profile</div>
-            <div>{children}</div>
-          </main>
-        </div>
+        <LayoutProvider>{children}</LayoutProvider>
       </body>
     </html>
   );

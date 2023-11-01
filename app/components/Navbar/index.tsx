@@ -27,7 +27,7 @@ const Navabr = () => {
           <div
             className={` flex items-center gap-2 text-lg ${
               pathname !== "/" ? "bg-[#313436]" : "bg-white text-black"
-            }  hover:bg-white hover:text-black w-full rounded-lg px-4 py-5`}
+            }  hover:bg-white hover:text-black w-full rounded-lg px-2 py-3 md:px-4 md:py-5`}
           >
             <span className=" text-2xl">
               <MdSpaceDashboard />
@@ -40,7 +40,7 @@ const Navabr = () => {
           <div
             className={` flex items-center gap-2 text-lg ${
               pathname !== "/myFlights" ? "bg-[#313436]" : "bg-white text-black"
-            }  hover:bg-white hover:text-black w-full rounded-lg px-4 py-5`}
+            }  hover:bg-white hover:text-black w-full rounded-lg px-2 py-3 md:px-4 md:py-5`}
           >
             <span className=" text-2xl">
               <PiAirplaneInFlightBold />
