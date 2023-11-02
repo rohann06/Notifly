@@ -2,13 +2,15 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Navabr from "../components/Navbar";
-
+import { useSession } from "@clerk/nextjs";
 //Icons
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { UserButton } from "@clerk/nextjs";
 
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { session } = useSession();
   return (
     <div className=" h-full relative">
       <div className=" relative hidden h-full lg:w-80 lg:flex lg:flex-col lg:fixed lg:inset-y-0  bg-[#3C4042]">
@@ -27,7 +29,21 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
             </Link>
           </div>
           <div className=" flex items-center gap-2">
-            <p> Uaser profile </p>
+
+            {session ? (
+              <div className=" bg-white py-1 pr-1 pl-2 rounded-full">
+                <UserButton afterSignOutUrl="/" showName />
+              </div>
+            ) : (
+              <div>
+                <Link href={"/sign-in"}>
+                  <button className=" bg-white text-black font-medium hover:font-bold px-5 py-2 rounded-lg">
+                    Log in
+                  </button>
+                </Link>
+              </div>
+            )}
+
             <button
               onClick={() => setIsNavOpen(!isNavOpen)}
               className=" lg:hidden text-white text-2xl"
